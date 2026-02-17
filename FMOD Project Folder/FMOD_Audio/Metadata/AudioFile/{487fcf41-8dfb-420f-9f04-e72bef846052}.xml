@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{487fcf41-8dfb-420f-9f04-e72bef846052}">
+		<property name="assetPath">
+			<value>Vehicles/Basic Engine/veh_lawnmower_idle_exh.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.836125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{912aa92c-43a4-4627-b417-c914b1bc5fed}</destination>
+		</relationship>
+	</object>
+</objects>
