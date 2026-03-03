@@ -5,7 +5,7 @@
 			<value>Blue</value>
 		</property>
 		<property name="name">
-			<value>RRG-CharacterGrunts</value>
+			<value>RRG-Events</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9fb90f5b-7938-4011-9ac1-ea6279080053}</destination>
