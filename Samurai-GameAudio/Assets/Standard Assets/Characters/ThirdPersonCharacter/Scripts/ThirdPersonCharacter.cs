@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -29,8 +30,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+		//RRG Vars
+		[Header("Audio")]
+		[SerializeField] private EventReference m_PlayerStartedJumpedEvent;
+        [SerializeField] private EventReference m_PlayerEndedJumpedEvent;
 
-		void Start()
+		private bool hasJumpEndedSoundPlayed = false;
+
+
+        void Start()
 		{
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
@@ -168,12 +176,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// check whether conditions are right to allow a jump:
 			if (jump && !crouch && m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
 			{
-				// jump!
-				m_Rigidbody.linearVelocity = new Vector3(m_Rigidbody.linearVelocity.x, m_JumpPower, m_Rigidbody.linearVelocity.z);
+                // jump!
+                RuntimeManager.PlayOneShot(m_PlayerStartedJumpedEvent, transform.position);
+                m_Rigidbody.linearVelocity = new Vector3(m_Rigidbody.linearVelocity.x, m_JumpPower, m_Rigidbody.linearVelocity.z);
 				m_IsGrounded = false;
 				m_Animator.applyRootMotion = false;
 				m_GroundCheckDistance = 0.1f;
-			}
+            }
 		}
 
 		void ApplyExtraTurnRotation()
@@ -210,16 +219,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// it is also good to note that the transform position in the sample assets is at the base of the character
 			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
 			{
-				m_GroundNormal = hitInfo.normal;
+                m_GroundNormal = hitInfo.normal;
 				m_IsGrounded = true;
 				m_Animator.applyRootMotion = true;
-			}
+				if (!hasJumpEndedSoundPlayed)
+				{
+                    RuntimeManager.PlayOneShot(m_PlayerEndedJumpedEvent, transform.position);
+					hasJumpEndedSoundPlayed = true;
+                }
+            }
 			else
 			{
 				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
-			}
+				hasJumpEndedSoundPlayed = false;
+            }
 		}
 	}
 }
