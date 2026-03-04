@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{19b0fcf6-3a3a-4038-aaff-50f622b2afb6}">
+		<property name="assetPath">
+			<value>JRE-Assets/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{912aa92c-43a4-4627-b417-c914b1bc5fed}</destination>
+		</relationship>
+	</object>
+</objects>
