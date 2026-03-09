@@ -19,7 +19,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
-		bool m_IsGrounded;
+		public bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
@@ -36,6 +36,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         [SerializeField] private EventReference m_PlayerEndedJumpedEvent;
 
 		private bool hasJumpEndedSoundPlayed = false;
+		public float storeYLinearVelocity;
+        int gruntSelected;
 
 
         void Start()
@@ -50,8 +52,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
 		}
 
+        private void Update()
+        {
+			print(storeYLinearVelocity);
+        }
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+        public void Move(Vector3 move, bool crouch, bool jump)
 		{
 
 			// convert the world relative moveInput vector into a local-relative
@@ -167,7 +173,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			Vector3 extraGravityForce = (Physics.gravity * m_GravityMultiplier) - Physics.gravity;
 			m_Rigidbody.AddForce(extraGravityForce);
 
-			m_GroundCheckDistance = m_Rigidbody.linearVelocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
+            storeYLinearVelocity = m_Rigidbody.linearVelocity.y;
+            m_GroundCheckDistance = m_Rigidbody.linearVelocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
 		}
 
 
@@ -222,9 +229,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_GroundNormal = hitInfo.normal;
 				m_IsGrounded = true;
 				m_Animator.applyRootMotion = true;
-				if (!hasJumpEndedSoundPlayed)
+				
+                if (!hasJumpEndedSoundPlayed)
 				{
-                    RuntimeManager.PlayOneShot(m_PlayerEndedJumpedEvent, transform.position);
+                    PlayLandingGrunt();
 					hasJumpEndedSoundPlayed = true;
                 }
             }
@@ -236,5 +244,26 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				hasJumpEndedSoundPlayed = false;
             }
 		}
+		private void PlayLandingGrunt()
+		{
+            var eventInstance = RuntimeManager.CreateInstance(m_PlayerEndedJumpedEvent);
+            
+            if (storeYLinearVelocity < m_JumpPower * -1 - 4) //flip jump power to negative and minus 4
+            {
+                gruntSelected = 1;
+                print("GRUNT 1 SELECTED");
+                eventInstance.setParameterByName("SelectJumpFallGrunt", gruntSelected);
+                eventInstance.start();
+                eventInstance.release();
+            }
+            else if (storeYLinearVelocity < m_JumpPower * -1 + 1) //flip jump power to negative and plus 1
+            {
+                gruntSelected = 0;
+                print("GRUNT 0 SELECTED");
+                eventInstance.setParameterByName("SelectJumpFallGrunt", gruntSelected);
+                eventInstance.start();
+                eventInstance.release();
+            }
+        }
 	}
 }
