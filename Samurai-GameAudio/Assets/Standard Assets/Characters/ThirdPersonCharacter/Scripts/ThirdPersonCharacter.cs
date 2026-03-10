@@ -17,6 +17,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
 
+
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		public bool m_IsGrounded;
@@ -30,8 +31,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
-		//RRG Vars
-		[Header("Audio")]
+		//VEB Vars
+		[Header("Current Floor Status")]
+		[SerializeField] private string m_GroundTag;
+
+        //RRG Vars
+        [Header("Audio")]
 		[SerializeField] private EventReference m_PlayerStartedJumpedEvent;
         [SerializeField] private EventReference m_PlayerEndedJumpedEvent;
 
@@ -226,23 +231,25 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// it is also good to note that the transform position in the sample assets is at the base of the character
 			if (Physics.Raycast(transform.position + (Vector3.up * 0.1f), Vector3.down, out hitInfo, m_GroundCheckDistance))
 			{
-                m_GroundNormal = hitInfo.normal;
+				m_GroundNormal = hitInfo.normal;
 				m_IsGrounded = true;
 				m_Animator.applyRootMotion = true;
 				
+				m_GroundTag = hitInfo.collider.tag.ToString();
+
                 if (!hasJumpEndedSoundPlayed)
 				{
-                    PlayLandingGrunt();
+					PlayLandingGrunt();
 					hasJumpEndedSoundPlayed = true;
-                }
-            }
+				}
+			}
 			else
 			{
 				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
 				hasJumpEndedSoundPlayed = false;
-            }
+			}
 		}
 		private void PlayLandingGrunt()
 		{
