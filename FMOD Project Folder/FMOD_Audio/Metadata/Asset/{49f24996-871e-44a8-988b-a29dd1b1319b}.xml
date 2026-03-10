@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{49f24996-871e-44a8-988b-a29dd1b1319b}">
+		<property name="assetPath">
+			<value>VEB-Assets/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{912aa92c-43a4-4627-b417-c914b1bc5fed}</destination>
+		</relationship>
+	</object>
+</objects>
