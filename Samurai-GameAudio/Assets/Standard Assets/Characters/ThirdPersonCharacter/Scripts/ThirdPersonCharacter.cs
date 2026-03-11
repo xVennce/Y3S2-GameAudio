@@ -9,17 +9,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 	public class ThirdPersonCharacter : MonoBehaviour {
 		[SerializeField] float m_MovingTurnSpeed = 360;
 		[SerializeField] float m_StationaryTurnSpeed = 180;
-		[SerializeField] float m_JumpPower = 12f;
+		[SerializeField] public float m_JumpPower = 12f;
 		[Range(1f, 4f)][SerializeField] float m_GravityMultiplier = 2f;
 		[SerializeField] float m_RunCycleLegOffset = 0.2f; //specific to the character in sample assets, will need to be modified to work with others
-		[SerializeField] float m_MoveSpeedMultiplier = 1f;
+		[SerializeField] public float m_MoveSpeedMultiplier = 1f;
 		[SerializeField] float m_AnimSpeedMultiplier = 1f;
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
 
 
 		Rigidbody m_Rigidbody;
 		Animator m_Animator;
-		public bool m_IsGrounded;
+		private bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
 		const float k_Half = 0.5f;
 		float m_TurnAmount;
@@ -41,7 +41,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] private EventReference m_PlayerEndedJumpedEvent;
 
 		private bool hasJumpEndedSoundPlayed = false;
-		public float storeYLinearVelocity;
+		private float storeYLinearVelocity;
 		int gruntSelected;
 
 		private float m_FootstepTimer = 0f;
@@ -60,12 +60,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 
 		private void Update() {
-			print(storeYLinearVelocity);
-			
 			if (m_IsGrounded) {
 				m_FootstepTimer += Time.deltaTime;
 				if (m_FootstepTimer >= m_FootstepInterval) {
-					PlayFootSteps();
+					//PlayFootSteps();
 					m_FootstepTimer = 0f;
 				}
 			}
