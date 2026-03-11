@@ -28,9 +28,22 @@ public class RRG_NinjaModes : MonoBehaviour
 
     private Slider lockedInSlider;
     private CinemachineFreeLook cinemachineCam;
-    private float defaultFOV;
-    private float increasedFOV;
+    private float defaultFOV; float fovToDefaultSpeed = 1.0f;
+    private float increasedFOV; float fovToIncreasedSpeed = 2.0f;
+    private float targetFOV;
+    private float fovChangeSpeed;
 
+    private GameObject particle;
+    private ParticleSystem playerPetals;
+    private ParticleSystem.EmissionModule petalEmission;
+
+    private void Awake()
+    {
+        particle = Instantiate(transformParticle, particleParent.transform, false);
+        playerPetals = particle.GetComponent<ParticleSystem>();
+        petalEmission = playerPetals.emission;
+        petalEmission.rateOverTime = 0f;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,6 +66,7 @@ public class RRG_NinjaModes : MonoBehaviour
         //camera changes
         defaultFOV = cinemachineCam.m_Lens.FieldOfView;
         increasedFOV = defaultFOV * 1.1f;
+        targetFOV = defaultFOV;
     }
 
     // Update is called once per frame
@@ -62,6 +76,7 @@ public class RRG_NinjaModes : MonoBehaviour
         {
             StartCoroutine(TransformParticle());
         }
+        cinemachineCam.m_Lens.FieldOfView = Mathf.Lerp(cinemachineCam.m_Lens.FieldOfView, targetFOV, Time.deltaTime * fovChangeSpeed);
     }
 
     private void ChangeNinjaMode(int mode) //0 = fat  1 = skinny
@@ -71,14 +86,14 @@ public class RRG_NinjaModes : MonoBehaviour
             TransferNinjaScale(fatNinjaScale);
             playerController.m_MoveSpeedMultiplier = fatNinjaMoveSpeedMultiplier;
             playerController.m_JumpPower = fatNinjaJumpPower;
-            cinemachineCam.m_Lens.FieldOfView = defaultFOV;
+            targetFOV = defaultFOV; fovChangeSpeed = fovToDefaultSpeed; //camera fov changes
         }
         if (mode == 1)
         {
             TransferNinjaScale(Vector3.one);
             playerController.m_MoveSpeedMultiplier = skinnyNinjaMoveSpeedMultiplier;
             playerController.m_JumpPower = skinnyNinjaJumpPower;
-            cinemachineCam.m_Lens.FieldOfView = increasedFOV;
+            targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
         }
     }
     private void TransferNinjaScale(Vector3 fatSpineScale)
@@ -108,12 +123,15 @@ public class RRG_NinjaModes : MonoBehaviour
     }
     IEnumerator TransformParticle()
     {
-        GameObject particle = Instantiate(transformParticle, particleParent.transform, false);
+        petalEmission.rateOverTime = 50;
 
-        // Wait while the effect plays
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f); //wait 2 secs for particle transition before transforming player
 
         StartCoroutine(SkinnyNinjaDuration());
-        Destroy(particle);
+        petalEmission.rateOverTime = 5;
+
+        yield return new WaitForSeconds(skinnyTimeDuration); //wait until player transforms back to fat before destroying particle
+
+        petalEmission.rateOverTime = 0; 
     }
 }
