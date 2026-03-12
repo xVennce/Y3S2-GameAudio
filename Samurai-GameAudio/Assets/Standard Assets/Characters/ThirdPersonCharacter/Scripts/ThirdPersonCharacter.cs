@@ -17,7 +17,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_GroundCheckDistance = 0.1f;
 
 
-		Rigidbody m_Rigidbody;
+		[HideInInspector] public Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		private bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
