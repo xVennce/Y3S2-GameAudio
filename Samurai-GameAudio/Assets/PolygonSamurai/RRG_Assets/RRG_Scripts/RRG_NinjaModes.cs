@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
+using FMODUnity;
 
 public class RRG_NinjaModes : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class RRG_NinjaModes : MonoBehaviour
 
     private bool isLockedIn;
 
+    [Header("Ninja Mode Parameter")]
+    [SerializeField] private EventReference m_NinjaMode;
+
     private void Awake()
     {
         particle = Instantiate(transformParticle, particleParent.transform, false);
@@ -73,6 +77,7 @@ public class RRG_NinjaModes : MonoBehaviour
         targetFOV = defaultFOV;
 
         SetFullscreenSpeedAplha(0.0f);
+        ChangeFmodParameter("FatMode");
     }
 
     // Update is called once per frame
@@ -87,7 +92,6 @@ public class RRG_NinjaModes : MonoBehaviour
         if (isLockedIn)
         {
             SetFullscreenSpeedAplha(playerController.m_Rigidbody.linearVelocity.magnitude / 10);
-            print(playerController.m_Rigidbody.linearVelocity.magnitude / 10.5f);
         }
     }
 
@@ -100,6 +104,7 @@ public class RRG_NinjaModes : MonoBehaviour
             playerController.m_JumpPower = fatNinjaJumpPower;
             targetFOV = defaultFOV; fovChangeSpeed = fovToDefaultSpeed; //camera fov changes
             SetFullscreenSpeedAplha(0.0f);
+            ChangeFmodParameter("FatMode");
             isLockedIn = false;
         }
         if (mode == 1)
@@ -108,6 +113,7 @@ public class RRG_NinjaModes : MonoBehaviour
             playerController.m_MoveSpeedMultiplier = skinnyNinjaMoveSpeedMultiplier;
             playerController.m_JumpPower = skinnyNinjaJumpPower;
             targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
+            ChangeFmodParameter("LockedInMode");
             isLockedIn = true;
         }
     }
@@ -153,5 +159,11 @@ public class RRG_NinjaModes : MonoBehaviour
     private void SetFullscreenSpeedAplha(float alpha)
     {
         speedShaderMat.SetFloat("_Alpha", alpha);
+    }
+    private void ChangeFmodParameter(string mode)
+    {
+		print("Changed Parameter to " + mode);
+        var eventInstance = RuntimeManager.CreateInstance(m_NinjaMode);
+        eventInstance.setParameterByNameWithLabel("NinjaMode", mode);
     }
 }
