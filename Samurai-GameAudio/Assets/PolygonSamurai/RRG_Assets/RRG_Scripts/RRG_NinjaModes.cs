@@ -41,9 +41,10 @@ public class RRG_NinjaModes : MonoBehaviour
     [SerializeField] Material speedShaderMat;
 
     private bool isLockedIn;
+    
+    //ninja mode snapshot
+    private FMOD.Studio.EventInstance modeSnapshot;
 
-    [Header("Ninja Mode Parameter")]
-    [SerializeField] private EventReference m_NinjaMode;
 
     private void Awake()
     {
@@ -51,6 +52,8 @@ public class RRG_NinjaModes : MonoBehaviour
         playerPetals = particle.GetComponent<ParticleSystem>();
         petalEmission = playerPetals.emission;
         petalEmission.rateOverTime = 0f;
+        modeSnapshot = RuntimeManager.CreateInstance("snapshot:/RRG-LockedInMode");
+        modeSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -77,7 +80,6 @@ public class RRG_NinjaModes : MonoBehaviour
         targetFOV = defaultFOV;
 
         SetFullscreenSpeedAplha(0.0f);
-        ChangeFmodParameter("FatMode");
     }
 
     // Update is called once per frame
@@ -104,8 +106,9 @@ public class RRG_NinjaModes : MonoBehaviour
             playerController.m_JumpPower = fatNinjaJumpPower;
             targetFOV = defaultFOV; fovChangeSpeed = fovToDefaultSpeed; //camera fov changes
             SetFullscreenSpeedAplha(0.0f);
-            ChangeFmodParameter("FatMode");
+            modeSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isLockedIn = false;
+
         }
         if (mode == 1)
         {
@@ -113,7 +116,7 @@ public class RRG_NinjaModes : MonoBehaviour
             playerController.m_MoveSpeedMultiplier = skinnyNinjaMoveSpeedMultiplier;
             playerController.m_JumpPower = skinnyNinjaJumpPower;
             targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
-            ChangeFmodParameter("LockedInMode");
+            modeSnapshot.start();
             isLockedIn = true;
         }
     }
@@ -159,11 +162,5 @@ public class RRG_NinjaModes : MonoBehaviour
     private void SetFullscreenSpeedAplha(float alpha)
     {
         speedShaderMat.SetFloat("_Alpha", alpha);
-    }
-    private void ChangeFmodParameter(string mode)
-    {
-		print("Changed Parameter to " + mode);
-        var eventInstance = RuntimeManager.CreateInstance(m_NinjaMode);
-        eventInstance.setParameterByNameWithLabel("NinjaMode", mode);
     }
 }

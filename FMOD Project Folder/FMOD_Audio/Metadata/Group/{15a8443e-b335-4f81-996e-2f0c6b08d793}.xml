@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerGroup" id="{15a8443e-b335-4f81-996e-2f0c6b08d793}">
+		<property name="name">
+			<value>RRG-Gameplay</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{ff85b2c7-ecbe-49a8-b9f0-ffd66627e5f4}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{cb44b964-8380-40e6-9f3a-ef1d21de9efd}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{a08fbebd-e084-4c66-9dd9-90f86e14fb96}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{ff85b2c7-ecbe-49a8-b9f0-ffd66627e5f4}">
+		<relationship name="effects">
+			<destination>{46f499c5-bc03-4418-9d82-b30b8a618bb7}</destination>
+			<destination>{b591b906-c256-4c30-84f9-e606c072b800}</destination>
+			<destination>{aebe14ce-41fd-453a-b6a4-43fc20acb28c}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{cb44b964-8380-40e6-9f3a-ef1d21de9efd}" />
+	<object class="MixerBusFader" id="{46f499c5-bc03-4418-9d82-b30b8a618bb7}" />
+	<object class="MultibandEqEffect" id="{b591b906-c256-4c30-84f9-e606c072b800}">
+		<property name="frequencyA">
+			<value>22000</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{aebe14ce-41fd-453a-b6a4-43fc20acb28c}">
+		<property name="HFDecayRatio">
+			<value>10</value>
+		</property>
+		<property name="density">
+			<value>22.5</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>-36</value>
+		</property>
+		<property name="wetLevel">
+			<value>-80</value>
+		</property>
+	</object>
+</objects>
