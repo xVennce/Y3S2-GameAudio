@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{e768c95a-4068-4daf-9205-99b112928598}">
+		<property name="name">
+			<value>JRE-Events</value>
+		</property>
+		<relationship name="folder">
+			<destination>{9fb90f5b-7938-4011-9ac1-ea6279080053}</destination>
+		</relationship>
+	</object>
+</objects>
