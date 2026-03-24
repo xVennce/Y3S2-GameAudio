@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{30dd8d66-5903-41e8-ac2a-9327fc931881}">
+		<property name="name">
+			<value>SelectJumpFallGrunt</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c7fb8291-7815-4103-bfcf-29e58b935d14}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9ec4529f-86bf-45d5-9e91-e6dfc39242fd}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9ec4529f-86bf-45d5-9e91-e6dfc39242fd}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
