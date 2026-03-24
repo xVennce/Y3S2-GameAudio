@@ -1648,12 +1648,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 5
   m_GravityMultiplier: 1
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+  m_Rigidbody: {fileID: 0}
   m_GroundTag: 
   m_PlayerFootStepEvent:
     Guid:
@@ -1695,6 +1696,7 @@ MonoBehaviour:
   skinnyTimeDuration: 5
   skinnyMovementMultiplier: 2
   skinnyJumpMultiplier: 1.5
+  speedShaderMat: {fileID: 2100000, guid: ab66d6644fd2b014daa17cc7384b823e, type: 2}
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +3156,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4974079367605988, guid: f7988944762557542877880bd717822e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3316367867160558707}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1951828876864660, guid: f7988944762557542877880bd717822e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9085506395689098931}
   m_SourcePrefab: {fileID: 100100000, guid: f7988944762557542877880bd717822e, type: 3}
 --- !u!1 &6667796796436953336 stripped
 GameObject:
@@ -3171,6 +3176,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1951828876864660, guid: f7988944762557542877880bd717822e, type: 3}
   m_PrefabInstance: {fileID: 6668740510748008838}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9085506395689098931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668369818266782994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1657366351
+      Data2: 1324154738
+      Data3: 1461895811
+      Data4: -818102400
+    Path: event:/JEH-Events/white noise base layer
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &6673643945679785826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4974079367605988, guid: f7988944762557542877880bd717822e, type: 3}
