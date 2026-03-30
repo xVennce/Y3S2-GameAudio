@@ -256,7 +256,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				eventInstance.release();
 			}
 		}
-		private void PlayFootSteps() {
+		public void PlayFootSteps() {
 			var eventInstance = RuntimeManager.CreateInstance(m_PlayerFootStepEvent);
 
 			eventInstance.setParameterByNameWithLabel("Footsteps", m_GroundTag);
