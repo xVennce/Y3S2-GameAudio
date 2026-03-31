@@ -39,6 +39,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[Header("Audio")]
 		[SerializeField] private EventReference m_PlayerStartedJumpedEvent;
 		[SerializeField] private EventReference m_PlayerEndedJumpedEvent;
+		private float lastFootstep;
 
 		private bool hasJumpEndedSoundPlayed = false;
 		private float storeYLinearVelocity;
@@ -144,10 +145,21 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.SetFloat("Jump", m_Rigidbody.linearVelocity.y);
 			}
 
-			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
-			// (This code is reliant on the specific run cycle offset in our animations,
-			// and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
-			float runCycle =
+			//RRG - plays footstep audio when feet touch ground
+			var footstep = m_Animator.GetFloat("Footstep");
+			if (Mathf.Abs(footstep) < 0.00001f) footstep = 0f; //fixes footsteps triggering when in idle
+				
+			if (lastFootstep > 0 && footstep < 0 || lastFootstep < 0 && footstep > 0)
+			{
+				PlayFootSteps();
+            }
+
+            lastFootstep = footstep;
+
+            // calculate which leg is behind, so as to leave that leg trailing in the jump animation
+            // (This code is reliant on the specific run cycle offset in our animations,
+            // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
+            float runCycle =
 				Mathf.Repeat(
 					m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
 			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;

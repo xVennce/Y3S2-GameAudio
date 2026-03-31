@@ -8,6 +8,7 @@ TagManager:
   - Dirt
   - Grass
   - Gravel
+  - Wood
   layers:
   - Default
   - TransparentFX
