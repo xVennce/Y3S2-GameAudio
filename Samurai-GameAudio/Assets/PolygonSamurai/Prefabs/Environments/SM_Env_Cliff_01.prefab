@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64124303293019446}
   m_Layer: 0
   m_Name: SM_Env_Cliff_01
-  m_TagString: Gravel
+  m_TagString: Dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
