@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{504eeb02-a368-46f0-8499-8d1b939fb051}">
+		<property name="assetPath">
+			<value>588465__cartoonrob__bird_currawong001.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>33.176666666666669</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{912aa92c-43a4-4627-b417-c914b1bc5fed}</destination>
+		</relationship>
+	</object>
+</objects>
