@@ -5,7 +5,7 @@
 			<value>CowB Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -79,9 +79,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{91c3a9a4-f966-4dfa-8dad-a3705485701e}">
-		<property name="volume">
-			<value>5.5</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{e240d53f-6e56-4c40-887f-b2b25d027549}</destination>
 		</relationship>
@@ -121,37 +118,61 @@
 	<object class="MixerBusPanner" id="{a3811c6c-63ad-44c7-b64f-36ee7894de52}" />
 	<object class="MixerBusEffectChain" id="{e240d53f-6e56-4c40-887f-b2b25d027549}">
 		<relationship name="effects">
+			<destination>{b7b2a9fc-05af-455e-bfbc-4c7649b3a462}</destination>
 			<destination>{489dd6a9-ea51-4b5e-8366-6b35aa503ba1}</destination>
 			<destination>{2f35650e-2bb9-4662-ab7f-57cc3fbfcc3e}</destination>
-			<destination>{41dc8866-d595-458b-bc2d-06eb6c82b0d7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{d41a36b8-ac6f-43bc-958c-ab677d306006}" />
 	<object class="MixerBusFader" id="{43b570f4-5e49-4582-b165-9c411a497dda}" />
+	<object class="MultibandEqEffect" id="{b7b2a9fc-05af-455e-bfbc-4c7649b3a462}">
+		<property name="filterTypeA">
+			<value>6</value>
+		</property>
+		<property name="filterTypeB">
+			<value>9</value>
+		</property>
+		<property name="filterTypeC">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>46.7688141</value>
+		</property>
+		<property name="frequencyB">
+			<value>1551.14563</value>
+		</property>
+		<property name="frequencyC">
+			<value>10434.874</value>
+		</property>
+		<property name="qualityA">
+			<value>0.360424697</value>
+		</property>
+		<property name="qualityB">
+			<value>1.25</value>
+		</property>
+		<property name="qualityC">
+			<value>1.10000002</value>
+		</property>
+		<property name="gainB">
+			<value>-13.6836395</value>
+		</property>
+		<property name="gainC">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="CompressorEffect" id="{489dd6a9-ea51-4b5e-8366-6b35aa503ba1}">
 		<property name="threshold">
-			<value>-9</value>
+			<value>-25.5</value>
 		</property>
 		<property name="ratio">
-			<value>1.70000005</value>
+			<value>11.5</value>
 		</property>
 		<property name="attackTime">
-			<value>94</value>
+			<value>88</value>
 		</property>
 		<property name="releaseTime">
-			<value>1000</value>
+			<value>720</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{2f35650e-2bb9-4662-ab7f-57cc3fbfcc3e}" />
-	<object class="SpatialiserEffect" id="{41dc8866-d595-458b-bc2d-06eb6c82b0d7}">
-		<property name="distanceRolloffType">
-			<value>3</value>
-		</property>
-		<property name="extentMode">
-			<value>1</value>
-		</property>
-		<property name="soundSize">
-			<value>2</value>
-		</property>
-	</object>
 </objects>

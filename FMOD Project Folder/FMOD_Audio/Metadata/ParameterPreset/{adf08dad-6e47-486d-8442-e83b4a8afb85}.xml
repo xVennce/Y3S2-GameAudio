@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="ParameterPreset" id="{38014c24-70f4-424a-98b8-90d7fee3070d}">
+	<object class="ParameterPreset" id="{adf08dad-6e47-486d-8442-e83b4a8afb85}">
 		<property name="name">
-			<value>CowB Voiceline</value>
+			<value>WC Voiceline</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3cccfc09-bd5d-4918-b003-bfa5cbe2c13e}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{180fdce9-48fc-43d6-a818-cbc78861cc86}</destination>
+			<destination>{f8a8468a-9d52-46cb-aa92-fa5e7d6e161a}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{180fdce9-48fc-43d6-a818-cbc78861cc86}">
+	<object class="GameParameter" id="{f8a8468a-9d52-46cb-aa92-fa5e7d6e161a}">
 		<property name="parameterType">
 			<value>1</value>
 		</property>
@@ -20,9 +20,6 @@
 		</property>
 		<property name="initialValue">
 			<value>0</value>
-		</property>
-		<property name="isExposedRecursively">
-			<value>false</value>
 		</property>
 	</object>
 </objects>

@@ -5,7 +5,7 @@
 			<value>WC Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -75,12 +75,12 @@
 			<destination>{d899be24-1ddd-481c-9a54-0eac6f3b2726}</destination>
 		</relationship>
 		<relationship name="preset">
-			<destination>{180fdce9-48fc-43d6-a818-cbc78861cc86}</destination>
+			<destination>{f8a8468a-9d52-46cb-aa92-fa5e7d6e161a}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{06922a95-66ac-481a-83ba-a13985abadbc}">
 		<property name="volume">
-			<value>6</value>
+			<value>-9</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{8d3dfb76-7bcf-470c-9baa-4fca287ee025}</destination>
@@ -121,22 +121,67 @@
 	<object class="MixerBusPanner" id="{3f198373-9cdc-44d6-b14b-e420a9b46de2}" />
 	<object class="MixerBusEffectChain" id="{8d3dfb76-7bcf-470c-9baa-4fca287ee025}">
 		<relationship name="effects">
+			<destination>{f7dd22b1-532c-4f71-b8e1-0ba4dd9757c0}</destination>
+			<destination>{0cbf6968-cd28-4939-95ff-0ad91068e9c2}</destination>
 			<destination>{d4e64fa4-a649-4aff-93b6-b9afc99c0763}</destination>
-			<destination>{65bd8609-d2e4-42fc-99d0-5a84ae89a067}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a0057072-31ee-485f-b6cc-b478d14bde85}" />
 	<object class="MixerBusFader" id="{be23a0ab-acd8-4d7a-be45-e8076c65eabc}" />
-	<object class="MixerBusFader" id="{d4e64fa4-a649-4aff-93b6-b9afc99c0763}" />
-	<object class="SpatialiserEffect" id="{65bd8609-d2e4-42fc-99d0-5a84ae89a067}">
-		<property name="distanceRolloffType">
-			<value>3</value>
+	<object class="MultibandEqEffect" id="{f7dd22b1-532c-4f71-b8e1-0ba4dd9757c0}">
+		<property name="filterTypeA">
+			<value>6</value>
 		</property>
-		<property name="extentMode">
-			<value>1</value>
+		<property name="filterTypeB">
+			<value>9</value>
 		</property>
-		<property name="soundSize">
-			<value>2</value>
+		<property name="filterTypeC">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>46.7688141</value>
+		</property>
+		<property name="frequencyB">
+			<value>1551.14563</value>
+		</property>
+		<property name="frequencyC">
+			<value>10653.3301</value>
+		</property>
+		<property name="qualityA">
+			<value>0.297291428</value>
+		</property>
+		<property name="qualityB">
+			<value>1.20000005</value>
+		</property>
+		<property name="qualityC">
+			<value>10</value>
+		</property>
+		<property name="gainA">
+			<value>-1.2026006</value>
+		</property>
+		<property name="gainB">
+			<value>-14.2036839</value>
+		</property>
+		<property name="gainC">
+			<value>-12.1235094</value>
 		</property>
 	</object>
+	<object class="CompressorEffect" id="{0cbf6968-cd28-4939-95ff-0ad91068e9c2}">
+		<property name="threshold">
+			<value>-11.5</value>
+		</property>
+		<property name="ratio">
+			<value>3.79999995</value>
+		</property>
+		<property name="attackTime">
+			<value>46</value>
+		</property>
+		<property name="releaseTime">
+			<value>960</value>
+		</property>
+		<property name="gain">
+			<value>7</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{d4e64fa4-a649-4aff-93b6-b9afc99c0763}" />
 </objects>
