@@ -147,7 +147,7 @@
 			<value>decayTime</value>
 		</property>
 		<property name="value">
-			<value>14000</value>
+			<value>1000</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{aebe14ce-41fd-453a-b6a4-43fc20acb28c}</destination>
@@ -257,7 +257,7 @@
 			<value>wetLevel</value>
 		</property>
 		<property name="value">
-			<value>-6.5</value>
+			<value>0</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{aebe14ce-41fd-453a-b6a4-43fc20acb28c}</destination>
@@ -268,7 +268,7 @@
 			<value>dryLevel</value>
 		</property>
 		<property name="value">
-			<value>-5</value>
+			<value>0</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{aebe14ce-41fd-453a-b6a4-43fc20acb28c}</destination>

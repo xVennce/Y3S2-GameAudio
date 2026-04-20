@@ -120,6 +120,9 @@
 	</object>
 	<object class="MixerBusPanner" id="{752d329d-f2fd-41bc-ad17-ba0cfe74b5d4}" />
 	<object class="SnapshotModule" id="{268b08f0-33ce-4eb2-a863-b8b966f00129}">
+		<property name="intensity">
+			<value>0</value>
+		</property>
 		<relationship name="event">
 			<destination>{64069df6-c0d1-43ec-ba94-5e708152d189}</destination>
 		</relationship>

@@ -102,6 +102,9 @@
 		<property name="length">
 			<value>0.27500000000000002</value>
 		</property>
+		<property name="intensity">
+			<value>0</value>
+		</property>
 		<relationship name="event">
 			<destination>{64069df6-c0d1-43ec-ba94-5e708152d189}</destination>
 		</relationship>
