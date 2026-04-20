@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using FMODUnity;
+using FMOD.Studio;
 
 public class RRG_NinjaModes : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class RRG_NinjaModes : MonoBehaviour
     private bool isLockedIn;
     
     //ninja mode snapshot
-    private FMOD.Studio.EventInstance modeSnapshot;
+    private EventInstance modeSnapshot;
 
 
     private void Awake()

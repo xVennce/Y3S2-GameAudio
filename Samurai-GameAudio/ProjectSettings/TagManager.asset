@@ -9,6 +9,7 @@ TagManager:
   - Grass
   - Gravel
   - Wood
+  - Tunnel
   layers:
   - Default
   - TransparentFX

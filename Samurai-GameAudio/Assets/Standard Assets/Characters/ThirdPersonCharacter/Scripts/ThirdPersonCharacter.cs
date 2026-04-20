@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -48,6 +49,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		private float m_FootstepTimer = 0f;
 		private float m_FootstepInterval = 1f;
 
+		private EventInstance tunnelSnapshot;
+
 
 		void Start() {
 			m_Animator = GetComponent<Animator>();
@@ -58,7 +61,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
-		}
+
+            tunnelSnapshot = RuntimeManager.CreateInstance("snapshot:/RRG-Tunnel");
+            tunnelSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
 
 		private void Update() {
 			if (m_IsGrounded) {
@@ -149,7 +155,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			var footstep = m_Animator.GetFloat("Footstep");
 			if (Mathf.Abs(footstep) < 0.00001f) footstep = 0f; //fixes footsteps triggering when in idle
 				
-			if (lastFootstep > 0 && footstep < 0 || lastFootstep < 0 && footstep > 0)
+			if (lastFootstep > 0 && footstep < 0 || lastFootstep < 0 && footstep > 0) //if player is moving play footsteps
 			{
 				PlayFootSteps();
             }
@@ -235,6 +241,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = true;
 
 				m_GroundTag = hitInfo.collider.tag.ToString();
+				print(m_GroundTag);
 
 				if (!hasJumpEndedSoundPlayed) {
 					PlayLandingGrunt();
@@ -275,5 +282,22 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             eventInstance.start();
 			eventInstance.release();
 		}
-	}
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Tunnel"))
+			{
+                tunnelSnapshot.start();
+                print("In Tunnel");
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Tunnel"))
+			{
+                tunnelSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                print("Out Tunnel");
+            }
+        }
+    }
 }
