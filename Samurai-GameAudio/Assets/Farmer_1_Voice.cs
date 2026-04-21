@@ -15,9 +15,6 @@ public class Farmer_1_Voice : MonoBehaviour
     {
         Farmer_1_Voiceline_Instance = RuntimeManager.CreateInstance(Farmer_1_Voiceline);
         Collision_Count = -1;
-        
-        
-        
     }
 
     // Update is called once per frame
