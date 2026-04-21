@@ -241,7 +241,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.applyRootMotion = true;
 
 				m_GroundTag = hitInfo.collider.tag.ToString();
-				print(m_GroundTag);
 
 				if (!hasJumpEndedSoundPlayed) {
 					PlayLandingGrunt();
