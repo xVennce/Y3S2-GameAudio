@@ -281,7 +281,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             eventInstance.start();
 			eventInstance.release();
 		}
-
+		public bool IsGroundedWrapper() {
+            return m_IsGrounded;
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Tunnel"))
