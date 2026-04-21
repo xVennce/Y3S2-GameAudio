@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{fc033967-7cc9-49b6-a299-bff7dde23b74}">
 		<property name="name">
-			<value>Chav voiceline</value>
+			<value>Chav Voiceline</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3cccfc09-bd5d-4918-b003-bfa5cbe2c13e}</destination>
