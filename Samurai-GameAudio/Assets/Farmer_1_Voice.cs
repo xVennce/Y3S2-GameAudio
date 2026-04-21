@@ -32,12 +32,11 @@ public class Farmer_1_Voice : MonoBehaviour
                 Collision_Count++;
             }
 
-            RuntimeManager.StudioSystem.setParameterByName("Voicelines", Collision_Count);
+            print(Collision_Count);
+
+            Farmer_1_Voiceline_Instance.setParameterByName("J Voiceline", Collision_Count);
             //Farmer_1_Voiceline_Instance.setParameterByName("Voicelines", Collision_Count);
             Farmer_1_Voiceline_Instance.start();
-
-
-                
         }
     }
 }
