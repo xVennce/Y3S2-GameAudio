@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{88388a05-e30b-4c2f-a61c-bd6aa89b3e5e}">
+		<property name="name">
+			<value>Man at pond</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c7fb8291-7815-4103-bfcf-29e58b935d14}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{7e8c886d-47b6-43b4-9ac4-4f8a3a2822e9}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{7e8c886d-47b6-43b4-9ac4-4f8a3a2822e9}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
