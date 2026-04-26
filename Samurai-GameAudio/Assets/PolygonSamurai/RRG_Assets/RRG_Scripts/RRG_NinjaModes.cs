@@ -41,6 +41,20 @@ public class RRG_NinjaModes : MonoBehaviour
     [Header("Fullscreen Shader References")]
     [SerializeField] Material speedShaderMat;
 
+    [Header("Fullscreen Shader References")]
+    [SerializeField] GameObject skinnyWaterCanteen;
+    [SerializeField] GameObject fatAlcoholContainer;
+    [SerializeField] GameObject skinnySword;
+    [SerializeField] GameObject fatFood;
+
+    [SerializeField] GameObject fatFoodPrefab;
+    [SerializeField] GameObject fatAlcoholContainerPrefab;
+    [SerializeField] GameObject skinnySwordPrefab;
+    [SerializeField] GameObject skinnyWaterCanteenPrefab;
+
+    private Transform fatFoodOriginalTransform;
+
+
     private bool isLockedIn;
     
     //ninja mode snapshot
@@ -51,7 +65,9 @@ public class RRG_NinjaModes : MonoBehaviour
     private EventInstance heartBeatInstance;
     private float heartBeatVolumeControl = 100;
     [SerializeField] EventReference drumFinishEvent;
-    private EventInstance drumFinishInstance;   
+    private EventInstance drumFinishInstance;
+    [SerializeField] EventReference outOfBreathEvent;
+    private EventInstance outOfBreathInstance;
 
 
 
@@ -65,6 +81,7 @@ public class RRG_NinjaModes : MonoBehaviour
         modeSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         heartBeatInstance = RuntimeManager.CreateInstance(heartBeatEvent);
         drumFinishInstance = RuntimeManager.CreateInstance(drumFinishEvent);
+        outOfBreathInstance = RuntimeManager.CreateInstance(outOfBreathEvent);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -91,6 +108,9 @@ public class RRG_NinjaModes : MonoBehaviour
         targetFOV = defaultFOV;
 
         SetFullscreenSpeedAplha(0.0f);
+
+        skinnyWaterCanteen.SetActive(false); skinnySword.SetActive(false);
+        fatAlcoholContainer.SetActive(true); fatFood.SetActive(true);
     }
 
     // Update is called once per frame
@@ -113,6 +133,7 @@ public class RRG_NinjaModes : MonoBehaviour
         if (mode == 0)
         {
             TransferNinjaScale(fatNinjaScale);
+            outOfBreathInstance.start();
             playerController.m_MoveSpeedMultiplier = fatNinjaMoveSpeedMultiplier;
             playerController.m_JumpPower = fatNinjaJumpPower;
             targetFOV = defaultFOV; fovChangeSpeed = fovToDefaultSpeed; //camera fov changes
@@ -120,7 +141,6 @@ public class RRG_NinjaModes : MonoBehaviour
             modeSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             heartBeatInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isLockedIn = false;
-
         }
         if (mode == 1)
         {
@@ -158,6 +178,7 @@ public class RRG_NinjaModes : MonoBehaviour
             lockedInSlider.value = currentValue;
             heartBeatVolumeControl = currentValue / skinnyTimeDuration; //swap values, 1 = low volume // 0 = max volume
             heartBeatInstance.setParameterByName("VolumeValue", heartBeatVolumeControl);
+            heartBeatInstance.setParameterByName("HeartPitch", heartBeatVolumeControl); //controls heart pitch
             if (currentValue <= 0.5f && !runOnce)
             {
                 drumFinishInstance.start();
@@ -173,19 +194,34 @@ public class RRG_NinjaModes : MonoBehaviour
     IEnumerator TransformParticle()
     {
         petalEmission.rateOverTime = 50;
+        SpawnItem(fatFoodPrefab, fatFood); SpawnItem(fatAlcoholContainerPrefab, fatAlcoholContainer);
+
+        fatAlcoholContainer.SetActive(false); fatFood.SetActive(false);
+        
 
         yield return new WaitForSeconds(2f); //wait 2 secs for particle transition before transforming player
 
         StartCoroutine(SkinnyNinjaDuration());
         petalEmission.rateOverTime = 5;
+        skinnyWaterCanteen.SetActive(true); skinnySword.SetActive(true);
 
         yield return new WaitForSeconds(skinnyTimeDuration); //wait until player transforms back to fat before destroying particle
 
         petalEmission.rateOverTime = 0;
+        SpawnItem(skinnySwordPrefab, skinnySword); SpawnItem(skinnyWaterCanteenPrefab, skinnyWaterCanteen);
+
+        fatAlcoholContainer.SetActive(true); fatFood.SetActive(true);
+        skinnyWaterCanteen.SetActive(false); skinnySword.SetActive(false);
     }
 
     private void SetFullscreenSpeedAplha(float alpha)
     {
         speedShaderMat.SetFloat("_Alpha", alpha);
+    }
+
+    private void SpawnItem(GameObject item, GameObject originalItem)
+    {
+        GameObject instanced = Instantiate(item, originalItem.transform.position, originalItem.transform.rotation);
+        Destroy(instanced, 3);
     }
 }
