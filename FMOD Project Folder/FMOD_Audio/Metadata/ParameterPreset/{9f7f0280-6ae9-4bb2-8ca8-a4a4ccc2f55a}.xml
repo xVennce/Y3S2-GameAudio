@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{9f7f0280-6ae9-4bb2-8ca8-a4a4ccc2f55a}">
+		<property name="name">
+			<value>Cobblestone Footsteps</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c7fb8291-7815-4103-bfcf-29e58b935d14}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{67a14d53-8ab1-4edd-b4c7-95ff2b97d3db}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{67a14d53-8ab1-4edd-b4c7-95ff2b97d3db}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>13</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

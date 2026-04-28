@@ -490,6 +490,7 @@ MonoBehaviour:
   - Master
   Banks:
   - Testing
+  - Village Atmos
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
