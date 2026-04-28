@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{bbdb2f8c-aea1-4fde-9cd5-74ca23e74d4b}">
 		<property name="name">
-			<value>DrumBackground</value>
+			<value>DrumBackground (NS Contribution)</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

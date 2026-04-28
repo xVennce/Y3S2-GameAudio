@@ -10,6 +10,7 @@ TagManager:
   - Gravel
   - Wood
   - Tunnel
+  - Cobblestone
   layers:
   - Default
   - TransparentFX

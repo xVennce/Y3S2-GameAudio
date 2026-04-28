@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64993274822000832}
   m_Layer: 0
   m_Name: SM_Env_Path_Straight_01
-  m_TagString: Dirt
+  m_TagString: Cobblestone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
