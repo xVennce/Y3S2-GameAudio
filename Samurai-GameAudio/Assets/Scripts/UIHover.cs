@@ -34,7 +34,7 @@ public class UIHover : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointer
     IEnumerator StartGame()
     
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("Demo");
     }
 }

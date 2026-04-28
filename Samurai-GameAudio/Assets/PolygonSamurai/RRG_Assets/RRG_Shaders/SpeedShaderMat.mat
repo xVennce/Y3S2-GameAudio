@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0
+    - _Alpha: 0.0028245554
     - _Mask_Contrast: 0.8
     - _Mask_Size: 0.5
     m_Colors:
