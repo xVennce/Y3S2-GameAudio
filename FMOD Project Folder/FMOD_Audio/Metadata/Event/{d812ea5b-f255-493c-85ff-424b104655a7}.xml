@@ -88,13 +88,16 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{2f45bb9c-dda4-49c8-babc-c0ade814ed45}">
+		<property name="start">
+			<value>1</value>
+		</property>
 		<relationship name="sounds">
 			<destination>{35d6d66e-d130-4b06-a3bf-6dc8e25cb2ea}</destination>
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{11d5b2cb-8e28-43d6-aad3-7f124b04a446}">
 		<property name="start">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{c0759437-707d-4ed1-ad22-44649ec2117f}</destination>

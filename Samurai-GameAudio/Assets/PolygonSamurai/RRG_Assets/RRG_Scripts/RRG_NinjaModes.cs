@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.ThirdPerson;
 using FMODUnity;
+using FMOD.Studio;
 
 public class RRG_NinjaModes : MonoBehaviour
 {
@@ -43,7 +44,15 @@ public class RRG_NinjaModes : MonoBehaviour
     private bool isLockedIn;
     
     //ninja mode snapshot
-    private FMOD.Studio.EventInstance modeSnapshot;
+    private EventInstance modeSnapshot;
+
+    [Header("Locked-In Events")]
+    [SerializeField] EventReference heartBeatEvent;
+    private EventInstance heartBeatInstance;
+    private float heartBeatVolumeControl = 100;
+    [SerializeField] EventReference drumFinishEvent;
+    private EventInstance drumFinishInstance;   
+
 
 
     private void Awake()
@@ -54,6 +63,8 @@ public class RRG_NinjaModes : MonoBehaviour
         petalEmission.rateOverTime = 0f;
         modeSnapshot = RuntimeManager.CreateInstance("snapshot:/RRG-LockedInMode");
         modeSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        heartBeatInstance = RuntimeManager.CreateInstance(heartBeatEvent);
+        drumFinishInstance = RuntimeManager.CreateInstance(drumFinishEvent);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -107,6 +118,7 @@ public class RRG_NinjaModes : MonoBehaviour
             targetFOV = defaultFOV; fovChangeSpeed = fovToDefaultSpeed; //camera fov changes
             SetFullscreenSpeedAplha(0.0f);
             modeSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            heartBeatInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isLockedIn = false;
 
         }
@@ -117,6 +129,7 @@ public class RRG_NinjaModes : MonoBehaviour
             playerController.m_JumpPower = skinnyNinjaJumpPower;
             targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
             modeSnapshot.start();
+            heartBeatInstance.start();
             isLockedIn = true;
         }
     }
@@ -128,6 +141,7 @@ public class RRG_NinjaModes : MonoBehaviour
     }
     IEnumerator SkinnyNinjaDuration()
     {
+        bool runOnce = false;
 
         ChangeNinjaMode(1); // change to skinny
 
@@ -135,13 +149,24 @@ public class RRG_NinjaModes : MonoBehaviour
         lockedInSlider.value = currentValue;
         lockedInSlider.gameObject.SetActive(true);
 
+        float startHeartBeatVolumeControl = 100;
+        heartBeatVolumeControl = startHeartBeatVolumeControl;
+
         while (currentValue > 0) //runs until duration finishes
         {
             currentValue -= Time.deltaTime;
             lockedInSlider.value = currentValue;
+            heartBeatVolumeControl = currentValue / skinnyTimeDuration; //swap values, 1 = low volume // 0 = max volume
+            heartBeatInstance.setParameterByName("VolumeValue", heartBeatVolumeControl);
+            if (currentValue <= 0.5f && !runOnce)
+            {
+                drumFinishInstance.start();
+                runOnce = true;
+            }
             yield return null;
         }
 
+        
         lockedInSlider.gameObject.SetActive(false);
         ChangeNinjaMode(0);
     }

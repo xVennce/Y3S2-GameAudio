@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{d6b5cf46-590c-4c05-8959-fc5b8318ad65}">
+		<property name="name">
+			<value>J Voiceline</value>
+		</property>
+		<relationship name="folder">
+			<destination>{3cccfc09-bd5d-4918-b003-bfa5cbe2c13e}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9397f2aa-a35e-48e0-9a3a-c6c18dc13610}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9397f2aa-a35e-48e0-9a3a-c6c18dc13610}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{41da8548-7f0a-4f16-b085-1b83a0da134e}">
+		<property name="name">
+			<value>Stepping on crops</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c7fb8291-7815-4103-bfcf-29e58b935d14}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{786497f1-0704-4536-bc2d-850c52ba2fc2}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{786497f1-0704-4536-bc2d-850c52ba2fc2}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Voiceline 1</value>
+			<value>Voiceline 2</value>
+			<value>Voiceline 3</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
