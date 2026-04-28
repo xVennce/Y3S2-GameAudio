@@ -5,7 +5,7 @@
 			<value>Bridge Soldier</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{df230018-3848-4398-bba1-6e66774118b7}</destination>
@@ -112,6 +112,7 @@
 	<object class="MixerBusEffectChain" id="{f7d7a7dc-9357-4268-8c09-fc22c2bdfde3}">
 		<relationship name="effects">
 			<destination>{dc9a7e30-58fa-4348-818a-f6e651ff9034}</destination>
+			<destination>{313417c2-0577-4a47-8514-aa6b7337b86b}</destination>
 			<destination>{ab885ee3-fc57-4e7b-b296-61e06c13d50c}</destination>
 		</relationship>
 	</object>
@@ -123,6 +124,14 @@
 		</property>
 		<property name="highGain">
 			<value>-6.5</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{313417c2-0577-4a47-8514-aa6b7337b86b}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>7</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{ab885ee3-fc57-4e7b-b296-61e06c13d50c}" />
