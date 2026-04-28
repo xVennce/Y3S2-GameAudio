@@ -33,6 +33,7 @@ public class RRG_NinjaModes : MonoBehaviour
     private float increasedFOV; float fovToIncreasedSpeed = 2.0f;
     private float targetFOV;
     private float fovChangeSpeed;
+    private float currentValue;
 
     private GameObject particle;
     private ParticleSystem playerPetals;
@@ -126,6 +127,12 @@ public class RRG_NinjaModes : MonoBehaviour
         {
             SetFullscreenSpeedAplha(playerController.m_Rigidbody.linearVelocity.magnitude / 10);
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isLockedIn)
+        {
+            currentValue += 5;
+            if (currentValue > skinnyTimeDuration) currentValue = skinnyTimeDuration;
+        }
     }
 
     private void ChangeNinjaMode(int mode) //0 = fat  1 = skinny
@@ -165,7 +172,7 @@ public class RRG_NinjaModes : MonoBehaviour
 
         ChangeNinjaMode(1); // change to skinny
 
-        float currentValue = skinnyTimeDuration;
+        currentValue = skinnyTimeDuration;
         lockedInSlider.value = currentValue;
         lockedInSlider.gameObject.SetActive(true);
 
