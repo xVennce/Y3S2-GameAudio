@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64555541294925160}
   m_Layer: 0
   m_Name: SM_Env_DirtPath_02
-  m_TagString: Gravel
+  m_TagString: Dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

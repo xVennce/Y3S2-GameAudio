@@ -1658,11 +1658,11 @@ MonoBehaviour:
   m_GroundTag: 
   m_PlayerFootStepEvent:
     Guid:
-      Data1: 1379717774
-      Data2: 1303162372
-      Data3: 1636334214
-      Data4: 1803292335
-    Path: event:/RRG-Events/CharacterFootsteps/AnimFootsteps
+      Data1: -669848997
+      Data2: 1228730965
+      Data3: 1262681989
+      Data4: -1487583728
+    Path: event:/VEB-Events/CharacterFootsteps/Footsteps
   m_PlayerStartedJumpedEvent:
     Guid:
       Data1: 2147070792
@@ -1693,24 +1693,10 @@ MonoBehaviour:
   childSpine: {fileID: 6668036272086804804}
   transformParticle: {fileID: 134202, guid: 08cb6415ce4ff9b4ebfc9cfa11ec866c, type: 3}
   particleParent: {fileID: 6668369818266782994}
-  skinnyTimeDuration: 10
+  skinnyTimeDuration: 5
   skinnyMovementMultiplier: 2
   skinnyJumpMultiplier: 1.5
   speedShaderMat: {fileID: 2100000, guid: ab66d6644fd2b014daa17cc7384b823e, type: 2}
-  heartBeatEvent:
-    Guid:
-      Data1: -826854908
-      Data2: 1255705202
-      Data3: 7081109
-      Data4: 1210915190
-    Path: event:/RRG-Events/CharacterLockedIn/HeartBeat
-  drumFinishEvent:
-    Guid:
-      Data1: -1644473056
-      Data2: 1209056322
-      Data3: 347424185
-      Data4: -2066999826
-    Path: event:/RRG-Events/CharacterLockedIn/DrumFinish
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,6 @@ TagManager:
   - Fire
   - Dirt
   - Grass
-  - Gravel
-  - Wood
-  - Tunnel
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,5 @@
 using UnityEngine;
 using FMODUnity;
-using FMOD.Studio;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -40,7 +39,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[Header("Audio")]
 		[SerializeField] private EventReference m_PlayerStartedJumpedEvent;
 		[SerializeField] private EventReference m_PlayerEndedJumpedEvent;
-		private float lastFootstep;
 
 		private bool hasJumpEndedSoundPlayed = false;
 		private float storeYLinearVelocity;
@@ -48,8 +46,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		private float m_FootstepTimer = 0f;
 		private float m_FootstepInterval = 1f;
-
-		private EventInstance tunnelSnapshot;
 
 
 		void Start() {
@@ -61,10 +57,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
-
-            tunnelSnapshot = RuntimeManager.CreateInstance("snapshot:/RRG-Tunnel");
-            tunnelSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-        }
+		}
 
 		private void Update() {
 			if (m_IsGrounded) {
@@ -151,21 +144,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				m_Animator.SetFloat("Jump", m_Rigidbody.linearVelocity.y);
 			}
 
-			//RRG - plays footstep audio when feet touch ground
-			var footstep = m_Animator.GetFloat("Footstep");
-			if (Mathf.Abs(footstep) < 0.00001f) footstep = 0f; //fixes footsteps triggering when in idle
-				
-			if (lastFootstep > 0 && footstep < 0 || lastFootstep < 0 && footstep > 0) //if player is moving play footsteps
-			{
-				PlayFootSteps();
-            }
-
-            lastFootstep = footstep;
-
-            // calculate which leg is behind, so as to leave that leg trailing in the jump animation
-            // (This code is reliant on the specific run cycle offset in our animations,
-            // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
-            float runCycle =
+			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
+			// (This code is reliant on the specific run cycle offset in our animations,
+			// and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
+			float runCycle =
 				Mathf.Repeat(
 					m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
 			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
@@ -274,29 +256,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				eventInstance.release();
 			}
 		}
-		public void PlayFootSteps() {
+		private void PlayFootSteps() {
 			var eventInstance = RuntimeManager.CreateInstance(m_PlayerFootStepEvent);
 
 			eventInstance.setParameterByNameWithLabel("Footsteps", m_GroundTag);
             eventInstance.start();
 			eventInstance.release();
 		}
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Tunnel"))
-			{
-                tunnelSnapshot.start();
-                print("In Tunnel");
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Tunnel"))
-			{
-                tunnelSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                print("Out Tunnel");
-            }
-        }
-    }
+	}
 }
