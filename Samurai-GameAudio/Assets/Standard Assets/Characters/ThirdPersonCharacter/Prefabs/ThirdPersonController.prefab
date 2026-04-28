@@ -1669,7 +1669,7 @@ MonoBehaviour:
       Data2: 1317691911
       Data3: 166998178
       Data4: -2059315140
-    Path: event:/RRG-CharacterGrunts/StartJump
+    Path: event:/RRG-Events/CharacterGrunts/StartJump
   m_PlayerEndedJumpedEvent:
     Guid:
       Data1: 1420231486
@@ -1726,6 +1726,13 @@ MonoBehaviour:
       Data3: -482006094
       Data4: -1957175336
     Path: event:/RRG-Events/CharacterLockedIn/TransformToFat
+  musicEvent:
+    Guid:
+      Data1: 899743907
+      Data2: 1116988310
+      Data3: -939631994
+      Data4: -2110059058
+    Path: event:/JEH-Events/music
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,6 +3592,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1117655688927008, guid: f7988944762557542877880bd717822e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2969901981223237886}
+    - targetCorrespondingSourceObject: {fileID: 1757711021717512, guid: f7988944762557542877880bd717822e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2668908762270985996}
   m_SourcePrefab: {fileID: 100100000, guid: f7988944762557542877880bd717822e, type: 3}
 --- !u!1 &6667796796436953336 stripped
 GameObject:
@@ -3596,6 +3606,42 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1617932857837762, guid: f7988944762557542877880bd717822e, type: 3}
   m_PrefabInstance: {fileID: 6668740510748008838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6668175774307408270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1757711021717512, guid: f7988944762557542877880bd717822e, type: 3}
+  m_PrefabInstance: {fileID: 6668740510748008838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2668908762270985996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668175774307408270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -461454008
+      Data2: 1076414081
+      Data3: 719047072
+      Data4: 1071372145
+    Path: event:/JEH-Events/tree ambience
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6668369818266782994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1951828876864660, guid: f7988944762557542877880bd717822e, type: 3}

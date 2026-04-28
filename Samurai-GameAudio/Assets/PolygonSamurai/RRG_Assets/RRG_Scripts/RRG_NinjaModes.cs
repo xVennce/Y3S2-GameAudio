@@ -69,6 +69,9 @@ public class RRG_NinjaModes : MonoBehaviour
     private EventInstance drumFinishInstance;
     [SerializeField] EventReference outOfBreathEvent;
     private EventInstance outOfBreathInstance;
+    private EventInstance drumFinishInstance;   
+    [SerializeField] EventReference musicEvent;
+    private EventInstance musicInstance;
 
 
 
@@ -83,6 +86,7 @@ public class RRG_NinjaModes : MonoBehaviour
         heartBeatInstance = RuntimeManager.CreateInstance(heartBeatEvent);
         drumFinishInstance = RuntimeManager.CreateInstance(drumFinishEvent);
         outOfBreathInstance = RuntimeManager.CreateInstance(outOfBreathEvent);
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -112,6 +116,7 @@ public class RRG_NinjaModes : MonoBehaviour
 
         skinnyWaterCanteen.SetActive(false); skinnySword.SetActive(false);
         fatAlcoholContainer.SetActive(true); fatFood.SetActive(true);
+        musicInstance.start();
     }
 
     // Update is called once per frame
@@ -148,6 +153,7 @@ public class RRG_NinjaModes : MonoBehaviour
             SetFullscreenSpeedAplha(0.0f);
             modeSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             heartBeatInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.start();
             isLockedIn = false;
         }
         if (mode == 1)
@@ -158,6 +164,7 @@ public class RRG_NinjaModes : MonoBehaviour
             targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
             modeSnapshot.start();
             heartBeatInstance.start();
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isLockedIn = true;
         }
     }
