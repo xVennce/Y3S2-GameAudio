@@ -52,6 +52,8 @@ public class RRG_NinjaModes : MonoBehaviour
     private float heartBeatVolumeControl = 100;
     [SerializeField] EventReference drumFinishEvent;
     private EventInstance drumFinishInstance;   
+    [SerializeField] EventReference musicEvent;
+    private EventInstance musicInstance;
 
 
 
@@ -65,6 +67,7 @@ public class RRG_NinjaModes : MonoBehaviour
         modeSnapshot.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         heartBeatInstance = RuntimeManager.CreateInstance(heartBeatEvent);
         drumFinishInstance = RuntimeManager.CreateInstance(drumFinishEvent);
+        musicInstance = RuntimeManager.CreateInstance(musicEvent);
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -91,6 +94,8 @@ public class RRG_NinjaModes : MonoBehaviour
         targetFOV = defaultFOV;
 
         SetFullscreenSpeedAplha(0.0f);
+
+        musicInstance.start();
     }
 
     // Update is called once per frame
@@ -119,6 +124,7 @@ public class RRG_NinjaModes : MonoBehaviour
             SetFullscreenSpeedAplha(0.0f);
             modeSnapshot.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             heartBeatInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            musicInstance.start();
             isLockedIn = false;
 
         }
@@ -130,6 +136,7 @@ public class RRG_NinjaModes : MonoBehaviour
             targetFOV = increasedFOV; fovChangeSpeed = fovToIncreasedSpeed; //camera fov changes
             modeSnapshot.start();
             heartBeatInstance.start();
+            musicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             isLockedIn = true;
         }
     }
