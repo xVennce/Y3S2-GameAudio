@@ -5,7 +5,7 @@
 			<value>CowB Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -120,6 +120,7 @@
 		<relationship name="effects">
 			<destination>{b7b2a9fc-05af-455e-bfbc-4c7649b3a462}</destination>
 			<destination>{489dd6a9-ea51-4b5e-8366-6b35aa503ba1}</destination>
+			<destination>{bb8a4470-b291-435f-a24c-2005cd6ced0d}</destination>
 			<destination>{2f35650e-2bb9-4662-ab7f-57cc3fbfcc3e}</destination>
 		</relationship>
 	</object>
@@ -172,6 +173,17 @@
 		</property>
 		<property name="releaseTime">
 			<value>720</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{bb8a4470-b291-435f-a24c-2005cd6ced0d}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>10</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{2f35650e-2bb9-4662-ab7f-57cc3fbfcc3e}" />

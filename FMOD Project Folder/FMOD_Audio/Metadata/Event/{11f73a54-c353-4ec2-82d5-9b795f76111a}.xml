@@ -5,7 +5,7 @@
 			<value>Man at pond goodbye</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{df230018-3848-4398-bba1-6e66774118b7}</destination>
@@ -91,9 +91,18 @@
 	<object class="MixerBusEffectChain" id="{6bbf7952-45c7-4934-b841-c2b816efc862}">
 		<relationship name="effects">
 			<destination>{470c31af-1a40-46bd-9b49-8f17b86227f9}</destination>
+			<destination>{f792fa8c-6650-42c7-ace5-d3011cde8127}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{988a232a-3ba2-49dd-8366-8e37be9f5df8}" />
 	<object class="MixerBusFader" id="{f32ea396-0fea-4510-99aa-0d5cfcbaf2af}" />
 	<object class="MixerBusFader" id="{470c31af-1a40-46bd-9b49-8f17b86227f9}" />
+	<object class="SpatialiserEffect" id="{f792fa8c-6650-42c7-ace5-d3011cde8127}">
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>7</value>
+		</property>
+	</object>
 </objects>

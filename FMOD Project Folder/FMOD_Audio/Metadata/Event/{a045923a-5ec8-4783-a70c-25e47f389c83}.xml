@@ -5,7 +5,7 @@
 			<value>WC Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -123,6 +123,7 @@
 		<relationship name="effects">
 			<destination>{f7dd22b1-532c-4f71-b8e1-0ba4dd9757c0}</destination>
 			<destination>{0cbf6968-cd28-4939-95ff-0ad91068e9c2}</destination>
+			<destination>{94491b90-a7f7-4d9b-a330-39b0576c61ac}</destination>
 			<destination>{d4e64fa4-a649-4aff-93b6-b9afc99c0763}</destination>
 		</relationship>
 	</object>
@@ -181,6 +182,17 @@
 		</property>
 		<property name="gain">
 			<value>7</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{94491b90-a7f7-4d9b-a330-39b0576c61ac}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>10</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{d4e64fa4-a649-4aff-93b6-b9afc99c0763}" />
