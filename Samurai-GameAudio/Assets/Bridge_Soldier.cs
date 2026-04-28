@@ -21,7 +21,7 @@ public class Bridge_Soldier : MonoBehaviour
     void Update()
     {
         
-        
+        Bridge_Soldier_Voiceline_Instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
     }
     void OnTriggerEnter(Collider player)
     {

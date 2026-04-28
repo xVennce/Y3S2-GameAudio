@@ -20,7 +20,7 @@ public class Man_at_pond_voice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Man_at_pond_Instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
         
     }
     void OnTriggerEnter(Collider player)

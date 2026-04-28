@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class TheLeekQuest : MonoBehaviour
@@ -18,6 +20,9 @@ public class TheLeekQuest : MonoBehaviour
     public GameObject leekToGive;
     public bool questStarted;
     bool doesPlayerHaveLeek;
+
+    [SerializeField] EventReference pickupSoundEvent;
+    private EventInstance pickupSoundInstance;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,7 @@ public class TheLeekQuest : MonoBehaviour
         pressToTalkUI.SetActive(false);
         leekToGive.SetActive(false);
         leekUIImage.SetActive(false);
+        pickupSoundInstance = RuntimeManager.CreateInstance(pickupSoundEvent);
     }
 
     // Update is called once per frame
@@ -48,6 +54,7 @@ public class TheLeekQuest : MonoBehaviour
 
                 questStarted = true;
                 pressToTalkUI.SetActive(false);
+                
             }
         }
     }
@@ -64,8 +71,7 @@ public class TheLeekQuest : MonoBehaviour
                     Destroy(leekToCollect);
                     doesPlayerHaveLeek = true;
                     leekUIImage.SetActive(true);
-
-
+                    pickupSoundInstance.start();
                 }
             }
         }

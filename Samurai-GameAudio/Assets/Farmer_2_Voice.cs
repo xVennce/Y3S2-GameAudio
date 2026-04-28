@@ -20,7 +20,7 @@ public class Farmer_2_Voice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Farmer_2_Voiceline_Instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
         
     }
     void OnTriggerEnter(Collider player)

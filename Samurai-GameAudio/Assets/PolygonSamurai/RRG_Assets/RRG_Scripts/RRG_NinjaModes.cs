@@ -68,8 +68,7 @@ public class RRG_NinjaModes : MonoBehaviour
     [SerializeField] EventReference drumFinishEvent;
     private EventInstance drumFinishInstance;
     [SerializeField] EventReference outOfBreathEvent;
-    private EventInstance outOfBreathInstance;
-    private EventInstance drumFinishInstance;   
+    private EventInstance outOfBreathInstance; 
     [SerializeField] EventReference musicEvent;
     private EventInstance musicInstance;
 
