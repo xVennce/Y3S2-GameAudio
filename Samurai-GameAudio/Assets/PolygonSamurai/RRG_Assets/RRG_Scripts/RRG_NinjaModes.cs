@@ -132,6 +132,7 @@ public class RRG_NinjaModes : MonoBehaviour
         {
             currentValue += 5;
             if (currentValue > skinnyTimeDuration) currentValue = skinnyTimeDuration;
+            
         }
     }
 
