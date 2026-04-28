@@ -20,8 +20,7 @@ public class Farmer_1_Voice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+
     }
     void OnTriggerEnter(Collider player)
     {
@@ -35,7 +34,6 @@ public class Farmer_1_Voice : MonoBehaviour
             print(Collision_Count);
 
             Farmer_1_Voiceline_Instance.setParameterByName("J Voiceline", Collision_Count);
-            //Farmer_1_Voiceline_Instance.setParameterByName("Voicelines", Collision_Count);
             Farmer_1_Voiceline_Instance.start();
         }
     }

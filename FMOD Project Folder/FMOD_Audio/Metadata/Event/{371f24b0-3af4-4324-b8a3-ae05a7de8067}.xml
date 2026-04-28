@@ -5,7 +5,7 @@
 			<value>J Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -123,6 +123,7 @@
 		<relationship name="effects">
 			<destination>{0c932a5f-a0ce-433a-a441-ca1c58562c9e}</destination>
 			<destination>{734680d5-cf45-4c03-b099-bbf72868710e}</destination>
+			<destination>{766f6e4e-86b1-4b07-9ec3-183d7472098c}</destination>
 			<destination>{3be9d3f2-3c3f-4281-a24a-cc8c7c2f44cd}</destination>
 		</relationship>
 	</object>
@@ -178,6 +179,17 @@
 		</property>
 		<property name="gain">
 			<value>-8</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{766f6e4e-86b1-4b07-9ec3-183d7472098c}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>10</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3be9d3f2-3c3f-4281-a24a-cc8c7c2f44cd}" />

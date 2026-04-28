@@ -5,7 +5,7 @@
 			<value>Chav Farmer</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d2e3ece9-f5c9-4fe9-b65c-f18ab1dbea8b}</destination>
@@ -123,6 +123,7 @@
 		<relationship name="effects">
 			<destination>{e6409819-f32d-4f86-a629-82f8dd3d8671}</destination>
 			<destination>{53f9c68d-9a22-4f5a-a678-197d43a937bd}</destination>
+			<destination>{91df7c40-5c26-4008-aba0-0910761d5629}</destination>
 			<destination>{5d3b518b-6077-49fd-8dc9-edd04e74e01a}</destination>
 		</relationship>
 	</object>
@@ -178,6 +179,17 @@
 		</property>
 		<property name="gain">
 			<value>-5</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{91df7c40-5c26-4008-aba0-0910761d5629}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="soundSize">
+			<value>10</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{5d3b518b-6077-49fd-8dc9-edd04e74e01a}" />
