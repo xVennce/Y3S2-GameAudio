@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EventFolder" id="{3cdb065a-03cc-4e5e-85a7-c81552926360}">
+		<property name="name">
+			<value>STA - Menu Sounds</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c03cc4ca-a0e5-48ed-805f-567b97153c70}</destination>
+		</relationship>
+	</object>
+</objects>
